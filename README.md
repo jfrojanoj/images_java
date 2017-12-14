@@ -62,4 +62,20 @@ binary images but not in a efficient way. Much less flexible than TIFF.
 * **Portable Bitmap Format (PBM):** The PBM format family consist of a series of very simple file formats that allows 
 to be saved in a human readable text format
 
-* **Additional file formats:** RGB, RAS, TGA, XBM/XPM, DICOM and FITS for medical and astronomical images.  
+* **Additional file formats:** RGB, RAS, TGA, XBM/XPM, DICOM and FITS for medical and astronomical images.
+
+
+
+## 3. Histograms and image statistics
+
+Histograms of images describe the frequency of the intensity values that occur in an image.
+
+$h(i) = card{(u, v) | I(u, v) = i}$
+
+The histogram encodes no information about *where* each of its individual entries originated in the image,
+it contains no information about the position of the pixels in the image, therefore it is not possible to reconstruct
+an image from its histogram
+
+### Interpreting histograms
+
+A histogram depicts problems originated during image acquisition
