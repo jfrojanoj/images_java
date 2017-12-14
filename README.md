@@ -78,4 +78,54 @@ an image from its histogram
 
 ### Interpreting histograms
 
-A histogram depicts problems originated during image acquisition
+A histogram depicts problems originated during image acquisition, such as those involving contrast, dynamic range 
+and artifacts due to image processing.
+
+#### Image acquisition
+
+Histograms make typical exposure problems readily apparent. A histogram where a large section of the intensity range
+at one end is largely unused while the other end is crowded with high-value peaks is representative of an improperly
+exposed image.
+
+* **Contrast:** Is understood as the range of intensity values effectively used within a given image, that's
+the difference between the image's maximum and minimum pixel values. A full-contrast image makes effective use of the
+entire range of available intensity values from a = a_min, ... , a_max with a_min = 0 and a_max = K - 1 (black to white).
+
+* **Dynamic range:** The dynamic range of an image is, in principle, understood as the number of *distinct* pixel values
+in an image. In the ideal case the dynamic range encompasses all K usable pixel values, in which case the value range 
+is completely utilized. When an image has an available range of contrast a = a_low, ..., a_high, with
+a_min < a_low and a_high < a_max, then the maximum dynamic range is achieved when when all the intensity values lying
+in this range are utilized.
+
+    An image whit high dynamic range is desirable because it will suffer less image-quality degradation during image 
+    processing and compression. Since it is not possible to increase dynamis range after image acquisition in a
+    practical way, professional cameras and scanners works at depths of more than 8 bits, often at 12 to 14 bits per
+    channel, in order to provide high dynamic range at the acquisition stage.
+    
+#### Image defects
+
+* **Saturation**: Ideally the contrast range of a sensor, should be greater than the range of the intensity of the 
+incident light. In such a case, the resulting histogram will be smooth at both ends because the light received from the 
+very bright and the very dark parts of the scene will be less than the light received from the other parts of the scene.
+In real life, when illumination outside of the sensor's contrast range, arising for example from glossy highlights and
+specially dark parts of the scene, cannot be captured and is lost, this generates a saturation of the sensor.The result
+is a histogram saturated at one or both ends of its range.
+The illumination values lying outside of the sensor's range are mapped to its minimum or maximum values and appear on
+the histogram as significant spikes at the tail ends.
+This typically occurs in an under or over exposed image and is generally not avoidable when the inherent contrast range
+of the scene is bigger than that of the system's sensor.
+
+* **Spikes and Gaps:** The intensity value distribution of an unprocessed image is generally smooth, that is, it is
+unlikely that isolated spikes or gaps are presented in its histogram also it is expected that the histogram is smooth,
+i.e the intensity value of a pixel is similar than that of its neighbors.
+
+    While artifacts like this are observed very rarely in original images, they will often be present after an image
+    has been manipulated.
+    * Increasing the contrast causes the histogram lines to separate of each other, and due to the discrete values, gaps
+    are created in the histogram.
+    * Decreasing the contrast leads to the merging of values that were previously distinct. This result in increases
+    in the corresponding histogram entries and ultimately leads to highly visible spikes in the histogram.
+
+* **Impact of image compression:** As an example, during GIF compression, an image's dynamic range is reduced to only a
+few intensities or colors, resulting in an obvious line structure in the histogram that cannot be removed by subsequent
+processing
